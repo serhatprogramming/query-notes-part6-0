@@ -28,7 +28,9 @@ const App = () => {
     updateNoteMutation.mutate({ ...note, important: !note.important });
   };
 
-  const result = useQuery("notes", getNotes);
+  const result = useQuery("notes", getNotes, {
+    refetchOnWindowFocus: false,
+  });
 
   if (result.isLoading) {
     return <div>Loading...</div>;
